@@ -1,5 +1,6 @@
 import { createTestMachine, createTestModel } from "@xstate/test";
 import { logInWithCredentials } from "../concepts/events.js";
+import { expect } from "@playwright/test";
 
 class MyAccountModel {
   machineLogin = createTestMachine(
@@ -79,23 +80,25 @@ class MyAccountModel {
     return {
       states: {
         onLoginPage: async () => {
-          await page.locator(".page-login");
+          await expect(page.locator(".page-login")).toBeVisible();
         },
         onErrorLoginPage: async () => {
-          await page.locator(".page-login");
-          await page.locator(".alert-danger");
+          await expect(page.locator(".page-login")).toBeVisible();
+          await expect(page.locator(".alert-danger")).toBeVisible();
         },
         onAccountPage: async () => {
-          await page.locator(".page-myAccountPage");
+          await expect(page.locator(".page-myAccountPage")).toBeVisible();
         },
         onMyProfilePage: async () => {
-          await page.locator(".page-myAccountProfilePage");
+          await expect(
+            page.locator(".page-myAccountProfilePage")
+          ).toBeVisible();
         },
         onOrderHistoryPage: async () => {
-          await page.locator(".page-myOrderHistory");
+          await expect(page.locator(".page-myOrderHistory")).toBeVisible();
         },
         onHomePage: async () => {
-          await page.locator(".page-homepage");
+          await expect(page.locator(".page-homepage")).toBeVisible();
         },
       },
       events: {
