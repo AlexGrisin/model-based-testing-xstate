@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import MyAccountModel from "../../models/MyAccountModel.js";
+import MyAccountModel from "../models/MyAccountModel.js";
 
 const paths = MyAccountModel.model.getShortestPaths();
 
