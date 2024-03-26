@@ -25,7 +25,8 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://tst11-www.raw-indigo.com",
+    // baseURL: "https://tst11-www.raw-indigo.com",
+    baseURL: "http://localhost:3000/",
     // headless: false,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
