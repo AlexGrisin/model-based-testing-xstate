@@ -1,12 +1,12 @@
 import { feedbackModel } from "../models/feedbackMachine.js";
 import { expect, test } from "@playwright/test";
 
-const paths = feedbackModel.getShortestPaths();
+const testPlans = feedbackModel.getShortestPaths();
 
-paths.forEach((path) => {
-  test(path.description, async ({ page }) => {
+testPlans.forEach((testPlan) => {
+  test(testPlan.description, async ({ page }) => {
     await page.goto("/");
-    await path.test({
+    await testPlan.test({
       states: {
         prompt: async () => {
           await expect(page.locator(".feedback")).toBeVisible();
