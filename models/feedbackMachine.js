@@ -1,5 +1,5 @@
-import { createTestModel } from "@xstate/test";
 import { assign, createMachine } from "xstate";
+import { getSimplePaths, createTestModel } from "@xstate/graph";
 
 export const feedbackMachine = createMachine(
   {
@@ -49,3 +49,5 @@ export const feedbackMachine = createMachine(
 );
 
 export const feedbackModel = createTestModel(feedbackMachine);
+
+export const feedbackPaths = getSimplePaths(feedbackMachine);

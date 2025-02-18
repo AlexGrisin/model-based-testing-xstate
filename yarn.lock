@@ -2522,11 +2522,6 @@
     "@webassemblyjs/ast" "1.12.1"
     "@xtuc/long" "4.2.2"
 
-"@xstate/graph@2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@xstate/graph/-/graph-2.0.0-beta.6.tgz#a118577572b8f318f73a42999962ff85ada1cd3a"
-  integrity sha512-nqwn1U92rj8e68ZuvV9cig78QUqzxvld55Xf4ca9v1cYcaJufot6WbcsNjVtE+y7C2rZ2zyMN8myU5iVKgvFHA==
-
 "@xstate/graph@^3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@xstate/graph/-/graph-3.0.2.tgz#1599bc1ab282b8c3e62d7ffc98042818bbd1361a"
@@ -2539,13 +2534,6 @@
   dependencies:
     use-isomorphic-layout-effect "^1.1.2"
     use-sync-external-store "^1.0.0"
-
-"@xstate/test@1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@xstate/test/-/test-1.0.0-beta.5.tgz#259e24f4846407329c7612f8d035373204795fd7"
-  integrity sha512-eveHd4YsJqumgUHCsZhhx0Gv8ve8aF2UUyoo4v3JlO2gJQedsyfe4YwODNL7Xkw/igGExgr3zFjjRG3XcjtKhw==
-  dependencies:
-    "@xstate/graph" "2.0.0-beta.6"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
