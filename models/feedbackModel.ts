@@ -19,7 +19,7 @@ export const feedbackMachine = createMachine(
       },
       feedbackForm: {
         on: {
-          'feedbackForm.update': {
+          'feedbackForm.fill': {
             actions: assign({
               feedback: 'OK',
             }),

@@ -28,7 +28,7 @@ testPlans.forEach((testPlan) => {
         'prompt.bad': async () => {
           await feedbackPromptPage.clickBad();
         },
-        'feedbackForm.update': async () => {
+        'feedbackForm.fill': async () => {
           await feedbackFormPage.fillFeedbackForm();
         },
         'feedbackForm.back': async () => {
