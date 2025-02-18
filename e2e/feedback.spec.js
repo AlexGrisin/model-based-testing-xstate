@@ -1,63 +1,60 @@
+import { test } from "../fixtures/testFixtures.js";
 import { feedbackModel } from "../models/feedbackMachine.js";
-import { expect, test } from "@playwright/test";
 
 const testPlans = feedbackModel.getShortestPaths();
 
 testPlans.forEach((testPlan) => {
-  test(testPlan.description, async ({ page }) => {
-    await page.goto("/");
-    await testPlan.test({
-      states: {
-        prompt: async () => {
-          await expect(page.locator(".feedback")).toBeVisible();
-          console.log("-> prompt");
+  test(
+    testPlan.description,
+    async ({
+      feedbackPromptPage,
+      feedbackFormPage,
+      thankYouPage,
+      feedbackClosedPage,
+    }) => {
+      await feedbackPromptPage.openPrompt();
+      await testPlan.test({
+        states: {
+          prompt: async () => {
+            await feedbackPromptPage.isOnFeedbackPrompt();
+          },
+          feedbackForm: async () => {
+            await feedbackFormPage.isOnFeedbackForm();
+          },
+          thankYou: async () => {
+            await thankYouPage.isOnThankYouPage();
+          },
+          closed: async () => {
+            await feedbackClosedPage.isOnClosedPage();
+          },
         },
-        form: async () => {
-          await expect(page.locator("textarea")).toBeVisible();
-          console.log("-> form");
+        events: {
+          "prompt.good": async () => {
+            await feedbackPromptPage.clickGood();
+          },
+          "prompt.bad": async () => {
+            await feedbackPromptPage.clickBad();
+          },
+          "feedbackForm.update": async () => {
+            await feedbackFormPage.fillFeedbackForm();
+          },
+          "feedbackForm.back": async () => {
+            await feedbackFormPage.clickBack();
+          },
+          "feedbackForm.submit": async () => {
+            await feedbackFormPage.submitFeedbackForm();
+          },
+          "closed.restart": async () => {
+            await feedbackClosedPage.restartFeedbackPrompt();
+          },
+          "prompt.close": async () => {
+            await feedbackPromptPage.clickClose();
+          },
+          "feedbackForm.close": async () => {
+            await feedbackPromptPage.clickClose();
+          },
         },
-        thanks: async () => {
-          await expect(page.locator("h2")).toContainText("Thanks");
-          console.log("-> thanks");
-        },
-        closed: async () => {
-          await expect(page.locator("em")).toContainText(
-            "Feedback form closed."
-          );
-          console.log("-> closed");
-        },
-      },
-      events: {
-        "feedback.good": async () => {
-          await page.getByText("Good").click();
-          console.log("--> feedback good");
-        },
-        "feedback.bad": async () => {
-          await page.getByText("Bad").click();
-          console.log("--> feedback bad");
-        },
-        "feedback.update": async () => {
-          await page.locator("textarea").fill("test update...");
-          console.log("--> feedback update");
-        },
-        back: async () => {
-          await page.getByText("Back").click();
-          console.log("--> back");
-        },
-        submit: async () => {
-          await page.locator("textarea").fill("submit");
-          await page.getByText("Submit").click();
-          console.log("--> submit");
-        },
-        restart: async () => {
-          await page.getByText("Provide more feedback").click();
-          console.log("--> restart");
-        },
-        "feedback.close": async () => {
-          await page.locator(".close-button").click();
-          console.log("--> close");
-        },
-      },
-    });
-  });
+      });
+    }
+  );
 });

@@ -3,7 +3,7 @@ import { getSimplePaths, createTestModel } from "@xstate/graph";
 
 export const feedbackMachine = createMachine(
   {
-    /** @xstate-layout N4IgpgJg5mDOIC5QDMyQEYEMDGBrAxKhjrgHTYA2A9rGANoAMAuoqAA40CWALp1QHasQAD0QAWAEwAaEAE9EARgDsADlJKGAZgUSGK7WM0qGSgL6mZRCFjyk2AJyoBbNt0JprJUlCpUIjFiQQDlgePkEg0QQAVhU1BgBOTSVNaIA2FTFjMRl5BE0tUl1tCU0JBIVNCrTzSw8bMgdnV3diWyx-ZiEQsIEhKNj4pJT0zOzcxAldUhUJFR0xaIlKjNTakCsG0mQqeydWz1sAVzYITG56LqCe3j7IxCVo6NIqhjTKsQUEsTSlHLlEPNSNEGKCGBIlEo0uUtGJ1psvDs9vgGgFulxbhFQFE0tDSApEpo0lp9CposoJghlAwXnMFF9iQofpV4fVEbt9rAjugnDw0dcMeF+ogkmlSBk-plQfNoilKQpZqRFiU9AYjCZWW0yJQaJB8PY4NxMPZuPz2IK7tjEKkxC8GD99AkEiZJBI0vLVOotDpVUz1WZ1vw-HAhAi8OjQpjhQgALTugGxsVgsFPJmPMpwiwbNm2JoubgR3pYkTiXFK6LaFYQhW4j0JIre3T6P3GAN1LXbDmFqP3BDGCSkQkpZKQgo6eWKhIVn3NwytzWHMjcAAWmH4uHgAsjQt7BLE9dlxgSKidpQS0gTXxpxR0CjS5NdsQXWx1tAg3Z3VoQyyTJQr6SUc9NA9JRSCnAopz9e072icxzCAA */
+    /** @xstate-layout N4IgpgJg5mDOIC5QDMyQEYEMDGBrAdAA4BOA9gLaEAuAxCRdflKaRANoAMAuoqIabACWVQaQB2vEAA9EARgBsAZnzyALB3kAmTQE4OAVnkB2ABybVAGhABPRCdn59HZwYX7Vikzv0BfH1dQMHAJ6SlpQxix2bkl+IRFxSRkEBWU1DW09Q1NzK1sERWd8Iw5FWVVzVXknJT8AtAgsPCIyMLpWxmwAGwEwTh4kEDjhUQlB5NSVdS1dA2MzSxtEd2VNUoUjTY5ZRR06kEDG4PxDptwAMVJichpT4Mvr-ABXQghMKj6YweGEsdBkxTVfAmfQ6RSbRSqUweEzyPKINaafCaJzOcyydyqfSw-Z3Zp4i5XG4Eh7kfDdXr9WICEaJcbLEzKExGJxrYwaEwVeEFDg6FSyHT2TlGWQcVRmRS4hpnE7S+5E25yvCk-BnKnfGm-JJyJRTDKzbILbkojjI9ZQnRVVQ6FG+fwHJUEEkK52PWBPdDkYTqvia0bahDYpksjhskryTmaY2g-CyAUSnQi0qqVRSoLNCmwSA0TOQfDEOBUTDEKg+oZ+un-RAskz4RSaeyQzRNgzcipIrFlEr6NY7Nl+e1iVhwSQE6nxf30hAAWjhSxn+nwOmXK9Xq8l9oJLQYVHHtL+0kQXPnhQcazKFRT1Q0G-q6adjtJe61U92i-0RnbHjUJkZ3MKyglGUcYzL+LJpkczRUAAFpgYi4AAmqQTzPpOVYIGCyiihilqaPICiMlG84okigKCuYYHyIKmwQTKuYQKhlaHhhihYdsoIVPhEb1ty+j1maZSMgsybyAOPhAA */
     id: "feedback",
     initial: "prompt",
     context: {
@@ -12,38 +12,41 @@ export const feedbackMachine = createMachine(
     states: {
       prompt: {
         on: {
-          "feedback.good": "thanks",
-          "feedback.bad": "form",
-          "feedback.close": "closed",
+          "prompt.good": "thankYou",
+          "prompt.bad": "feedbackForm",
+          "prompt.close": "closed",
         },
       },
-      form: {
+      feedbackForm: {
         on: {
-          "feedback.update": {
+          "feedbackForm.update": {
             actions: assign({
               feedback: "OK",
             }),
           },
-          "feedback.close": "closed",
-          back: "prompt",
-          submit: {
+          "feedbackForm.close": "closed",
+          "feedbackForm.back": "prompt",
+          "feedbackForm.submit": {
+            actions: assign({
+              feedback: "OK",
+            }),
             guard: "feedbackValid",
-            target: "thanks",
+            target: "thankYou",
           },
         },
       },
-      thanks: {},
+      thankYou: {},
       closed: {
         type: "final",
         on: {
-          restart: "prompt",
+          "closed.restart": "prompt",
         },
       },
     },
   },
   {
     guards: {
-      feedbackValid: ({ context }) => context.feedback.length === 0,
+      feedbackValid: ({ context }) => context.feedback === "OK",
     },
   }
 );
