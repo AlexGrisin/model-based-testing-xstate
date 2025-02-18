@@ -52,5 +52,3 @@ export const feedbackMachine = createMachine(
 );
 
 export const feedbackModel = createTestModel(feedbackMachine);
-
-export const feedbackPaths = getSimplePaths(feedbackMachine);

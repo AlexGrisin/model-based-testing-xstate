@@ -1,5 +1,5 @@
 import { test } from '../fixtures/testFixture';
-import { feedbackModel } from '../models/feedbackMachine.js';
+import { feedbackModel } from '../models/feedbackModel.js';
 
 const testPlans = feedbackModel.getShortestPaths();
 
