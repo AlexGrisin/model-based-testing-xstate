@@ -11,10 +11,10 @@ testPlans.forEach((testPlan) => {
         prompt: async () => {
           await feedbackPromptPage.isOnFeedbackPrompt();
         },
-        feedbackForm: async () => {
+        form: async () => {
           await feedbackFormPage.isOnFeedbackForm();
         },
-        thankYou: async () => {
+        thanks: async () => {
           await thankYouPage.isOnThankYouPage();
         },
         closed: async () => {
@@ -22,19 +22,19 @@ testPlans.forEach((testPlan) => {
         },
       },
       events: {
-        'prompt.good': async () => {
+        'feedback.good': async () => {
           await feedbackPromptPage.clickGood();
         },
-        'prompt.bad': async () => {
+        'feedback.bad': async () => {
           await feedbackPromptPage.clickBad();
         },
-        'feedbackForm.fill': async () => {
+        'form.update': async () => {
           await feedbackFormPage.fillFeedbackForm();
         },
-        'feedbackForm.back': async () => {
+        'form.back': async () => {
           await feedbackFormPage.clickBack();
         },
-        'feedbackForm.submit': async () => {
+        'form.submit': async () => {
           await feedbackFormPage.submitFeedbackForm();
         },
         'closed.restart': async () => {
@@ -43,7 +43,7 @@ testPlans.forEach((testPlan) => {
         'prompt.close': async () => {
           await feedbackPromptPage.clickClose();
         },
-        'feedbackForm.close': async () => {
+        'form.close': async () => {
           await feedbackPromptPage.clickClose();
         },
       },

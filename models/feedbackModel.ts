@@ -12,30 +12,30 @@ export const feedbackMachine = createMachine(
     states: {
       prompt: {
         on: {
-          'prompt.good': 'thankYou',
-          'prompt.bad': 'feedbackForm',
+          'feedback.good': 'thanks',
+          'feedback.bad': 'form',
           'prompt.close': 'closed',
         },
       },
-      feedbackForm: {
+      form: {
         on: {
-          'feedbackForm.fill': {
+          'form.update': {
             actions: assign({
               feedback: 'OK',
             }),
           },
-          'feedbackForm.close': 'closed',
-          'feedbackForm.back': 'prompt',
-          'feedbackForm.submit': {
+          'form.close': 'closed',
+          'form.back': 'prompt',
+          'form.submit': {
             actions: assign({
               feedback: 'OK',
             }),
             guard: 'feedbackValid',
-            target: 'thankYou',
+            target: 'thanks',
           },
         },
       },
-      thankYou: {},
+      thanks: {},
       closed: {
         type: 'final',
         on: {
