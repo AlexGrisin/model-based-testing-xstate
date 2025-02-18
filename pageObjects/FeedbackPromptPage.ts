@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from '@playwright/test';
 
 export class FeedbackPromptPage {
   page: Page;
@@ -9,14 +9,14 @@ export class FeedbackPromptPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.feedbackComponent = page.locator(".feedback");
-    this.goodOption = page.getByText("Good");
-    this.badOption = page.getByText("Bad");
-    this.closeButton = page.locator(".close-button");
+    this.feedbackComponent = page.locator('.feedback');
+    this.goodOption = page.getByText('Good');
+    this.badOption = page.getByText('Bad');
+    this.closeButton = page.locator('.close-button');
   }
 
   async openPrompt() {
-    await this.page.goto("/");
+    await this.page.goto('/');
   }
 
   async isOnFeedbackPrompt() {

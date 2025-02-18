@@ -5,12 +5,12 @@ import { createBrowserInspector } from '@statelyai/inspect';
 
 const { inspect } = createBrowserInspector({
   // Comment out the line below to start the inspector
-  autoStart: false
+  autoStart: false,
 });
 
 function Feedback() {
   const [state, send] = useMachine(feedbackMachine, {
-    inspect
+    inspect,
   });
 
   if (state.matches('closed')) {
@@ -42,16 +42,10 @@ function Feedback() {
       {state.matches('prompt') && (
         <div className="step">
           <h2>How was your experience?</h2>
-          <button
-            className="button"
-            onClick={() => send({ type: 'feedback.good' })}
-          >
+          <button className="button" onClick={() => send({ type: 'feedback.good' })}>
             Good
           </button>
-          <button
-            className="button"
-            onClick={() => send({ type: 'feedback.bad' })}
-          >
+          <button className="button" onClick={() => send({ type: 'feedback.bad' })}>
             Bad
           </button>
         </div>
@@ -60,9 +54,7 @@ function Feedback() {
       {state.matches('thanks') && (
         <div className="step">
           <h2>Thanks for your feedback.</h2>
-          {state.context.feedback.length > 0 && (
-            <p>"{state.context.feedback}"</p>
-          )}
+          {state.context.feedback.length > 0 && <p>"{state.context.feedback}"</p>}
         </div>
       )}
 
@@ -72,7 +64,7 @@ function Feedback() {
           onSubmit={(ev) => {
             ev.preventDefault();
             send({
-              type: 'submit'
+              type: 'submit',
             });
           }}
         >
@@ -84,7 +76,7 @@ function Feedback() {
             onChange={(ev) => {
               send({
                 type: 'feedback.update',
-                value: ev.target.value
+                value: ev.target.value,
               });
             }}
           />

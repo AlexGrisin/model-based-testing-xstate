@@ -1,8 +1,8 @@
-import { test as base } from "@playwright/test";
-import { FeedbackPromptPage } from "../pageObjects/FeedbackPromptPage";
-import { FeedbackFormPage } from "../pageObjects/FeedbackFormPage";
-import { ThankYouPage } from "../pageObjects/ThankYouPage";
-import { FeedbackClosedPage } from "../pageObjects/FeedbackClosedPage";
+import { test as base } from '@playwright/test';
+import { FeedbackPromptPage } from '../pageObjects/FeedbackPromptPage';
+import { FeedbackFormPage } from '../pageObjects/FeedbackFormPage';
+import { ThankYouPage } from '../pageObjects/ThankYouPage';
+import { FeedbackClosedPage } from '../pageObjects/FeedbackClosedPage';
 
 type Pages = {
   feedbackPromptPage: FeedbackPromptPage;
@@ -26,4 +26,4 @@ export const test = base.extend<Pages>({
   },
 });
 
-export { expect } from "@playwright/test";
+export { expect } from '@playwright/test';

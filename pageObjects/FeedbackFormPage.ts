@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from '@playwright/test';
 
 export class FeedbackFormPage {
   feedbackFormTextArea: Locator;
@@ -6,9 +6,9 @@ export class FeedbackFormPage {
   backButton: Locator;
 
   constructor(page: Page) {
-    this.feedbackFormTextArea = page.locator("textarea");
-    this.submitButton = page.getByText("Submit");
-    this.backButton = page.getByText("Back");
+    this.feedbackFormTextArea = page.locator('textarea');
+    this.submitButton = page.getByText('Submit');
+    this.backButton = page.getByText('Back');
   }
 
   async isOnFeedbackForm() {
@@ -16,7 +16,7 @@ export class FeedbackFormPage {
   }
 
   async fillFeedbackForm() {
-    await this.feedbackFormTextArea.fill("test update...");
+    await this.feedbackFormTextArea.fill('test update...');
   }
 
   async submitFeedbackForm() {
