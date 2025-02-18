@@ -4,7 +4,14 @@ import { FeedbackFormPage } from "../pageObjects/FeedbackFormPage";
 import { ThankYouPage } from "../pageObjects/ThankYouPage";
 import { FeedbackClosedPage } from "../pageObjects/FeedbackClosedPage";
 
-export const test = base.extend({
+type Pages = {
+  feedbackPromptPage: FeedbackPromptPage;
+  feedbackFormPage: FeedbackFormPage;
+  thankYouPage: ThankYouPage;
+  feedbackClosedPage: FeedbackClosedPage;
+};
+
+export const test = base.extend<Pages>({
   feedbackPromptPage: async ({ page }, use) => {
     await use(new FeedbackPromptPage(page));
   },

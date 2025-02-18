@@ -1,4 +1,4 @@
-import { test } from "../fixtures/testFixtures.js";
+import { test } from "../fixtures/testFixture";
 import { feedbackModel } from "../models/feedbackMachine.js";
 
 const testPlans = feedbackModel.getShortestPaths();

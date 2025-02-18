@@ -1,11 +1,11 @@
-import { expect } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
 export class FeedbackFormPage {
-  feedbackFormTextArea;
-  submitButton;
-  backButton;
+  feedbackFormTextArea: Locator;
+  submitButton: Locator;
+  backButton: Locator;
 
-  constructor(page) {
+  constructor(page: Page) {
     this.feedbackFormTextArea = page.locator("textarea");
     this.submitButton = page.getByText("Submit");
     this.backButton = page.getByText("Back");

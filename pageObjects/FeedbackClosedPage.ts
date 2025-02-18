@@ -1,10 +1,10 @@
-import { expect } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
 export class FeedbackClosedPage {
-  message;
-  restartButton;
+  message: Locator;
+  restartButton: Locator;
 
-  constructor(page) {
+  constructor(page: Page) {
     this.message = page.locator("em");
     this.restartButton = page.getByText("Provide more feedback");
   }

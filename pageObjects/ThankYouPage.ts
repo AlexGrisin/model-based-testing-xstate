@@ -1,9 +1,9 @@
-import { expect } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
 export class ThankYouPage {
-  header;
+  header: Locator;
 
-  constructor(page) {
+  constructor(page: Page) {
     this.header = page.locator("h2");
   }
 

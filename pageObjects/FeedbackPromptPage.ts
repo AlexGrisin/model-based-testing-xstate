@@ -1,13 +1,13 @@
-import { expect } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
 export class FeedbackPromptPage {
-  page;
-  feedbackComponent;
-  goodOption;
-  badOption;
-  closeButton;
+  page: Page;
+  feedbackComponent: Locator;
+  goodOption: Locator;
+  badOption: Locator;
+  closeButton: Locator;
 
-  constructor(page) {
+  constructor(page: Page) {
     this.page = page;
     this.feedbackComponent = page.locator(".feedback");
     this.goodOption = page.getByText("Good");
