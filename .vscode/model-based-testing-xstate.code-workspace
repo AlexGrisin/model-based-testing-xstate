@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "path": "../"
+        }
+    ],
+    "settings": {
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "files.exclude": {
+            "**/node_modules": true,
+            "**/dist": true,
+            "**/playwright-report": true
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/dist": true,
+            "**/playwright-report": true
+        },
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-vscode.typescript-language-features",
+            "esbenp.prettier-vscode",
+            "ms-playwright.playwright",
+            "statelyai.stately-vscode"
+        ]
+    }
+}
