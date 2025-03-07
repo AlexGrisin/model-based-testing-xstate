@@ -28,7 +28,11 @@ The aim of this POC is to explore the feasibility and benefits of using XState t
     ```bash
     yarn install
     ```
-3.  **Run the tests:**
+3.  **Start app:**
+    ```bash
+    yarn dev
+    ```
+4.  **Run the tests:**
     ```bash
     yarn test
     ```
